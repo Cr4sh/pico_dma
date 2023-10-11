@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="ASCII"?>
+<sdkproject:SdkProject xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:sdkproject="http://www.xilinx.com/sdkproject" name="application" location="/home/user/Documents/Vivado/7x_pcie_microblaze/software/application" platform="/home/user/Documents/Vivado/7x_pcie_microblaze/software/7x_pcie_microblaze/export/7x_pcie_microblaze/7x_pcie_microblaze.xpfm" platformUID="xilinx:::0.0(custom)" systemProject="application_system" sysConfig="7x_pcie_microblaze" runtime="cpp" cpu="standalone_domain" cpuInstance="microblaze_0" os="standalone" mssSignature="e12011d0002edf7ba91b8e544d2064f6">
+  <configuration name="Debug" id="xilinx.gnu.mb.exe.debug.824930021">
+    <configBuildOptions xsi:type="sdkproject:SdkOptions"/>
+    <lastBuildOptions xsi:type="sdkproject:SdkOptions"/>
+  </configuration>
+  <configuration name="Release" id="xilinx.gnu.mb.exe.release.1057807296">
+    <configBuildOptions xsi:type="sdkproject:SdkOptions"/>
+    <lastBuildOptions xsi:type="sdkproject:SdkOptions"/>
+  </configuration>
+  <template appTemplateName="hello_world"/>
+</sdkproject:SdkProject>
