@@ -2,7 +2,8 @@
 # Pico DMA
 
 [General information](#general-information)  
-[Configuration and usage](#configuration-and-usage)  
+[Hardware configuration](#hardware-configuration)  
+[Software configuration](#software-configuration)  
 [Autonomous DMA attacks](#autonomous-dma-attacks)  
 
 ## General information
