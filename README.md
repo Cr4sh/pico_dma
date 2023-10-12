@@ -16,6 +16,8 @@ Despite being focused on autonomous operation Pico DMA alternatively can be cont
 
 ## Configuration and usage
 
+To flash provided Pico DMA bitstream file `7x_pcie_microblaze.bin` into he board you can use one of the standard ways from PicoEVB documentation: [over PCI Express](https://github.com/RHSResearchLLC/PicoEVB/tree/master/spi-loader) or [using JTAG adapter with OpenOCD](https://github.com/RHSResearchLLC/PicoEVB/tree/master/spi-flash-program-openocd). 
+
 To configure and control the implant Pico DMA is using GPIO ports of `P1` connector of PicoEVB to expose UART interface (baud-rate 115200) and two push buttons: one for CPU reset and second for switching between autonomous mode and UART-controlled mode.
 
 <img src="https://raw.githubusercontent.com/Cr4sh/pico_dma/master/docs/images/pico_evb_pinout.png" width="598">
