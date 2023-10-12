@@ -11,6 +11,8 @@ This design allows to perform fully autonomous pre-boot DMA attacks over PCI Exp
 
 Despite being focused on autonomous operation Pico DMA alternatively can be controlled over the UART interface in fully compatible way with [PCI Express DIY hacking toolkit](https://github.com/Cr4sh/s6_pcie_microblaze) software libraries and programs. The toolkit is also [providing](https://github.com/Cr4sh/s6_pcie_microblaze/blob/master/python/evb_ctl.py) `evb_ctl.py` program used by this design to flash PicoEVB bitstream and payload UEFI DXE driver into the on-board SPI flash chip.
 
+On the picture you can see PicoEVB board with set of adapters that allows to use the implant with various PCI Express slots on the target: PCIe x1, mPCIe and [M.2 key M](https://github.com/RHSResearchLLC/PicoEVB/wiki/Adapters):
+
 <img src="https://raw.githubusercontent.com/Cr4sh/pico_dma/master/docs/images/boards.jpg" width="700">
 
 
