@@ -42,6 +42,8 @@ Payload is not present
 
 To switch from autonomous mode to UART-controlled mode and configure the implant you need to press CPU reset `SW2` push button while holding `SW1` mode select button, and release mode select after user LED `A` of the board lights up. To switch back to the autonomous mode you can either push CPU reset button or just reboot the target to which the board is connected over M.2 port.
 
+Before running `evb_ctl.py` or other program from PCI Express DIY hacking toolkit you need to edit `pcie_lib_config.py` configuration file, set `Conf.device_type` variable to `DEVICE_TYPE_SERIAL` and specify proper UART port device path (for example, `/dev/ttyUSB0`) in `Conf.device` variable along with its baud-rate.
+
 In UART-controlled mode you can use `evb_ctl.py` program to load desired payload UEFI DXE driver image into the SPI flash chip of the board with the following command:
 
 ```
