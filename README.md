@@ -16,7 +16,7 @@ Despite being focused on autonomous operation Pico DMA alternatively can be cont
 
 ## Configuration and usage
 
-To configure and control the implant Pico DMA is using GPIO ports of `P1` connector of PicoEVB to expose UART interface (baud-rate 115200) and two push buttons: one for CPU reset and second for switching between default autonomous mode and UART-controlled mode.
+To configure and control the implant Pico DMA is using GPIO ports of `P1` connector of PicoEVB to expose UART interface (baud-rate 115200) and two push buttons: one for CPU reset and second for switching between autonomous mode and UART-controlled mode.
 
 <img src="https://raw.githubusercontent.com/Cr4sh/pico_dma/master/docs/images/pico_evb_pinout.png" width="598">
 
@@ -24,7 +24,7 @@ To work with this interface it's convenient to make a cable like this one, where
 
 <img src="https://raw.githubusercontent.com/Cr4sh/pico_dma/master/docs/images/pico_evb_cable.png" width="580">
 
-By default Pico DMA stats its operation in autonomous mode. To switch from autonomous mode to UART-controlled mode you need to press CPU reset `SW2` push button while holding `SW1` mode select button, and release mode select after user LED `A` of the board lights up. To switch back to the autonomous mode you can either push CPU reset button or just reboot the target to which the board is connected over M.2 port.
+By default Pico DMA starts its operation in autonomous mode. To switch from autonomous mode to UART-controlled mode you need to press CPU reset `SW2` push button while holding `SW1` mode select button, and release mode select after user LED `A` of the board lights up. To switch back to the autonomous mode you can either push CPU reset button or just reboot the target to which the board is connected over M.2 port.
 
 In UART-controlled mode you can use `evb_ctl.py` program to load desired payload UEFI DXE driver image into the SPI flash chip of the board with the following command:
 
@@ -38,7 +38,9 @@ In UART-controlled mode you can use `evb_ctl.py` program to load desired payload
 [+] Done
 ```
 
-To erase payload image from memory you can use appropriate `--rom-erase` option of the program. Also, you can use the same program to flash FPGA bitstream into the board:
+To erase payload image from memory you can use appropriate `--rom-erase` option of the program. 
+
+Also, you can use the same program to flash FPGA bitstream into the board:
 
 ```
 # python2 evb_ctl.py --bit-load 7x_pcie_microblaze.bin
@@ -49,7 +51,7 @@ To erase payload image from memory you can use appropriate `--rom-erase` option 
 [+] Done
 ```
 
-When PCI-E link with the board is up &minus; UART-controlled mode allows you to work with usual Python programs from PCI Express DIY hacking toolkit. For example, you can read PCI configuration space registers of the board:
+When PCI-E link with the board is up &minus; UART-controlled mode allows you to work with usual Python tools from PCI Express DIY hacking toolkit. For example, you can read PCI configuration space registers of the board using `pcie_cfg.py` program:
 
 ```
 # python2 pcie_cfg.py
@@ -83,7 +85,7 @@ When PCI-E link with the board is up &minus; UART-controlled mode allows you to 
              MAX_LAT = 0x0
 ```
 
-Or even perform memory read or write operations over PCI-E bus of the target at relatively low speed of UART interface:
+Or even perform memory read or write operations over PCI-E bus of the target at relatively low speed of UART interface with `pcie_mem.py` program:
 
 ```
 $ DEBUG_TLP=1 python2 pcie_mem.py 0x10000 0x20
