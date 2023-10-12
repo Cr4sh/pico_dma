@@ -21,11 +21,11 @@ On the picture you can see PicoEVB board with set of adapters that allows to use
 
 To flash provided Pico DMA bitstream file `7x_pcie_microblaze.bin` into the board you can use one of the standard ways from PicoEVB documentation: [over PCI Express](https://github.com/RHSResearchLLC/PicoEVB/tree/master/spi-loader) or [using JTAG adapter with OpenOCD](https://github.com/RHSResearchLLC/PicoEVB/tree/master/spi-flash-program-openocd). 
 
-To configure and control the implant Pico DMA is using GPIO ports of `P1` connector of PicoEVB to expose UART interface (baud-rate 115200) and two push buttons: one for CPU reset and second for switching between autonomous mode and UART-controlled mode.
+To configure and control the implant Pico DMA is using GPIO ports of `P1` connector of PicoEVB to expose UART interface (baud-rate 115200) and two push buttons: one for CPU reset and second for switching between autonomous mode and UART-controlled mode:
 
 <img src="https://raw.githubusercontent.com/Cr4sh/pico_dma/master/docs/images/pico_evb_pinout.png" width="598">
 
-To work with this interface it's convenient to make a cable like this one, where one end is connected to `P1` of the board and another is UART interface connected with any suitable USB adapter to Linux machine with PCI Express DIY hacking toolkit programs installed.
+To work with this interface it's convenient to make a cable like this one, where one end is connected to `P1` of the board and another is UART interface connected with any suitable USB adapter to Linux machine with PCI Express DIY hacking toolkit programs installed:
 
 <img src="https://raw.githubusercontent.com/Cr4sh/pico_dma/master/docs/images/pico_evb_cable.png" width="580">
 
@@ -42,7 +42,7 @@ Payload is not present
 
 To switch from autonomous mode to UART-controlled mode and configure the implant you need to press CPU reset `SW2` push button while holding `SW1` mode select button, and release mode select after user LED `A` of the board lights up. To switch back to the autonomous mode you can either push CPU reset button or just reboot the target to which the board is connected over M.2 port.
 
-Before running `evb_ctl.py` or other program from PCI Express DIY hacking toolkit you need to edit `pcie_lib_config.py` configuration file, set `Conf.device_type` variable to `DEVICE_TYPE_SERIAL` and specify proper UART port device path (for example, `/dev/ttyUSB0`) in `Conf.device` variable along with its baud-rate.
+Before running `evb_ctl.py` or other programs from PCI Express DIY hacking toolkit you need to edit `pcie_lib_config.py` configuration file, set `Conf.device_type` variable to `DEVICE_TYPE_SERIAL` and edit other variables to specify proper UART port device path (for example, `/dev/ttyUSB0`) along with its baud-rate.
 
 In UART-controlled mode you can use `evb_ctl.py` program to load desired payload UEFI DXE driver image into the SPI flash chip of the board with the following command:
 
