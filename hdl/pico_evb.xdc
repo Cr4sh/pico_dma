@@ -65,19 +65,21 @@ set_property DRIVE 8 [get_ports {user_led[0]}]
 
 # clkreq_l is active low clock request for M.2 card to
 # request PCI Express reference clock
-set_property PACKAGE_PIN A9 [get_ports clkreq_l]
-set_property IOSTANDARD LVCMOS33 [get_ports clkreq_l]
-set_property PULLDOWN true [get_ports clkreq_l]
+set_property PACKAGE_PIN A9 [get_ports {clkreq_l}]
+set_property IOSTANDARD LVCMOS33 [get_ports {clkreq_l}]
+set_property PULLDOWN true [get_ports {clkreq_l}]
 
 # Auxillary I/O Connector
-set_property PACKAGE_PIN A14 [get_ports uart_rxd]
-set_property PACKAGE_PIN A13 [get_ports uart_txd]
-set_property IOSTANDARD LVCMOS33 [get_ports uart_rxd]
-set_property IOSTANDARD LVCMOS33 [get_ports uart_txd]
-set_property PACKAGE_PIN B12 [get_ports user_io[0]]
-set_property PACKAGE_PIN A12 [get_ports user_io[1]]
-set_property IOSTANDARD LVCMOS33 [get_ports user_io[0]]
-set_property IOSTANDARD LVCMOS33 [get_ports user_io[1]]
+set_property PACKAGE_PIN A14 [get_ports {uart_rxd}]
+set_property PACKAGE_PIN A13 [get_ports {uart_txd}]
+set_property IOSTANDARD LVCMOS33 [get_ports {uart_rxd}]
+set_property IOSTANDARD LVCMOS33 [get_ports {uart_txd}]
+set_property PACKAGE_PIN B12 [get_ports {user_io[0]}]
+set_property PACKAGE_PIN A12 [get_ports {user_io[1]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {user_io[0]}]
+set_property IOSTANDARD LVCMOS33 [get_ports {user_io[1]}]
+set_property PULLDOWN true [get_ports {user_io[0]}]
+set_property PULLDOWN true [get_ports {user_io[1]}]
 
 ###############################################################################
 # Additional design / project settings
