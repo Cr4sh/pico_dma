@@ -42,7 +42,7 @@ In UART-controlled mode you can use `evb_ctl.py` program to load desired payload
 [+] Done
 ```
 
-To erase payload image from memory you can use appropriate `--rom-erase` option of the program. 
+To erase payload image from memory you can use appropriate `--rom-erase` option of the program.
 
 Also, you can use the same program to flash FPGA bitstream into the board:
 
@@ -54,6 +54,8 @@ Also, you can use the same program to flash FPGA bitstream into the board:
 [+] 100% completed
 [+] Done
 ```
+
+PicoEVB board has 4 MB SPI flash chip, this design is using `0x150000` bytes of its space for FPGA bitstream and remaining `0x2b0000` bytes for pre-boot DMA attack payload, so its maximum size is limited to this specific value.
 
 When PCI-E link with the board is up &minus; UART-controlled mode allows you to work with usual Python tools from PCI Express DIY hacking toolkit. For example, you can read PCI configuration space registers of the board using `pcie_cfg.py` program:
 
