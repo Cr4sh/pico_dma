@@ -107,7 +107,7 @@ TLP RX: size = 0x0b, source = 00:00.0, type = CplD
 ```
 
 
-# Autonomous DMA attacks
+## Autonomous DMA attacks
 
 While working in autonomous mode, which is activated by default when board powers on, Pico DMA is trying to start DMA attack as soon as PCI-E bus becomes usable, injects previously flashed payload UEFI DXE driver into the target machine boot sequence and prints appropriate debug messages into the UART port:
 
