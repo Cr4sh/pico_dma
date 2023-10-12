@@ -16,7 +16,7 @@ On the picture you can see PicoEVB board with set of adapters that allows to use
 <img src="https://raw.githubusercontent.com/Cr4sh/pico_dma/master/docs/images/boards.jpg" width="700">
 
 
-## Configuration and usage
+## Hardware configuration
 
 To flash provided Pico DMA bitstream file `7x_pcie_microblaze.bin` into the board you can use one of the standard ways from PicoEVB documentation: [over PCI Express](https://github.com/RHSResearchLLC/PicoEVB/tree/master/spi-loader) or [using JTAG adapter with OpenOCD](https://github.com/RHSResearchLLC/PicoEVB/tree/master/spi-flash-program-openocd). 
 
@@ -27,6 +27,9 @@ To configure and control the implant Pico DMA is using GPIO ports of `P1` connec
 To work with this interface it's convenient to make a cable like this one, where one end is connected to `P1` of the board and another is UART interface connected with any suitable USB adapter to Linux machine with PCI Express DIY hacking toolkit programs installed.
 
 <img src="https://raw.githubusercontent.com/Cr4sh/pico_dma/master/docs/images/pico_evb_cable.png" width="580">
+
+
+## Software configuration
 
 By default Pico DMA starts its operation in autonomous mode where UART port is is used only to print software debug messages. Fresh board with flashed bitstream but without configured payload will print the following messages into the UART when reset event occurs:
 
