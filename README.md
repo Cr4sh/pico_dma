@@ -28,7 +28,15 @@ To work with this interface it's convenient to make a cable like this one, where
 
 <img src="https://raw.githubusercontent.com/Cr4sh/pico_dma/master/docs/images/pico_evb_cable.png" width="580">
 
-By default Pico DMA starts its operation in autonomous mode. To switch from autonomous mode to UART-controlled mode you need to press CPU reset `SW2` push button while holding `SW1` mode select button, and release mode select after user LED `A` of the board lights up. To switch back to the autonomous mode you can either push CPU reset button or just reboot the target to which the board is connected over M.2 port.
+By default Pico DMA starts its operation in autonomous mode where UART port is is used only to print software debug messages. Fresh board with flashed bitstream but without configured payload will print the following messages into the UART when reset event occurs:
+
+```
+mode_standalone(): Starting attack...
+ERROR: bad payload DOS signature
+Payload is not present
+```
+
+To switch from autonomous mode to UART-controlled mode and configure the implant you need to press CPU reset `SW2` push button while holding `SW1` mode select button, and release mode select after user LED `A` of the board lights up. To switch back to the autonomous mode you can either push CPU reset button or just reboot the target to which the board is connected over M.2 port.
 
 In UART-controlled mode you can use `evb_ctl.py` program to load desired payload UEFI DXE driver image into the SPI flash chip of the board with the following command:
 
@@ -145,6 +153,8 @@ Payload is at 0xC0000
 Payload entry is at 0xC23C4
 mode_standalone(): Completed
 ```
+
+After the accomplished pre-boot DMA attack Pico DMA software halts its operation and will perform the attack once again when reset event occurs, which happens after the target reboot or next power on.
 
 Project documentation is still incomplete at this moment.
 
