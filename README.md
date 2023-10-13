@@ -192,7 +192,7 @@ To build Pico DMA software and bitstream form the source code and you need to pe
 
  7. Close Vitis and get back to the Vivado. In design sources tree of the project you need to locate `application.elf` file, click "Replace File..." in its context menu and replace it with binary from your Vitis workspace that was compiled during previous step.
 
- 8. Run implementation and generate bitstream in Vivado, after successful completion you can execute `make bin` command to copy bitstream MCS and BIN files from Vivado project output directory into the `~/pico_dma/` root directory.
+ 8. Run implementation and generate bitstream in Vivado, after successful completion you can execute `make bin` command to copy bitstream files from Vivado project output directory into the `~/pico_dma/` root directory.
 
 To flash generated Pico DMA bitstream file `7x_pcie_microblaze.bin` into the board over its JTAG interface using Vivado, with bare minimum set of 3-rd party designs and tools, you can perform the following steps:
 
