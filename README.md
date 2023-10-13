@@ -184,7 +184,7 @@ To build Pico DMA software and bitstream form the source code and you need to pe
 
  <p align="center"><img src="https://raw.githubusercontent.com/Cr4sh/pico_dma/master/docs/images/vitis_project.png" width="425"></p>
 
- 5. Now you need to export C code and header files from `~/pico_dma/software/application/src/` folder into the source code tree of your newly created application like it shown on the picture:
+ 5. Now you need to import C code and header files from `~/pico_dma/software/application/src/` folder into the source code tree of your newly created application like it shown on the picture:
 
  <p align="center"><img src="https://raw.githubusercontent.com/Cr4sh/pico_dma/master/docs/images/vitis_export.png" width="444"></p>
 
@@ -200,7 +200,7 @@ To flash generated Pico DMA bitstream file `7x_pcie_microblaze.bin` into the boa
 
  2. Install [virtual JTAG cable software](https://github.com/RHSResearchLLC/xvcd) and run `sudo ./xvcd -P 0x6015` in the console to start its server.
 
- 3. Execute the following command in Vivado TCL console to run Hardware Manager and connect to the board over the virtual cable software: `open_hw; connect_hw_server; open_hw_target -xvc_url localhost:2542`.
+ 3. Execute the following command in Vivado TCL console to open Hardware Manager and connect to the board over the virtual cable: `open_hw; connect_hw_server; open_hw_target -xvc_url localhost:2542`.
 
  4. In Hardware Manager you need to select `xc7a50t_0` FPGA chip and run "Program Device" from its context menu to load the bitstream.
 
