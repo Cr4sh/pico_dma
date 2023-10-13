@@ -178,21 +178,21 @@ To build Pico DMA software and bitstream form the source code and you need to pe
 
  3. Run Xilinx Vitis IDE form Vivado using "Tools" → "Launch Vitis" main menu item. In Vitis you need to specify new empty folder (for example, `~/pico_dma/vitis/`) as your workspace and create new platform project from `pcie_microblaze_top.xsa` hardware description file generated at previous step:
 
- <img src="https://raw.githubusercontent.com/Cr4sh/pico_dma/master/docs/images/vitis_platform.png" width="425">
+ <p align="center"><img src="https://raw.githubusercontent.com/Cr4sh/pico_dma/master/docs/images/vitis_platform.png" width="425"></p>
 
  4. In Vitis IDE you need to create new C project called `application` for your platform and select "Empty Application" from available templates:
 
- <img src="https://raw.githubusercontent.com/Cr4sh/pico_dma/master/docs/images/vitis_project.png" width="425">
+ <p align="center"><img src="https://raw.githubusercontent.com/Cr4sh/pico_dma/master/docs/images/vitis_project.png" width="425"></p>
 
  5. Now you need to export C code and header files from `~/pico_dma/software/application/src/` folder into the source code tree of your newly created application like it shown on the picture:
 
- <img src="https://raw.githubusercontent.com/Cr4sh/pico_dma/master/docs/images/vitis_export.png" width="444">
+ <p align="center"><img src="https://raw.githubusercontent.com/Cr4sh/pico_dma/master/docs/images/vitis_export.png" width="444"></p>
 
  6. Compile Debug build of the platform and application in Vitis, resulting software image for MicroBlaze soft-processor will be created at `~/pico_dma/software/application/Debug/application.elf` file path.
 
  7. Close Vitis and get back to the Vivado. In design sources tree of the project you need to locate `application.elf` file, click "Replace File..." in its context menu and replace it with binary from your Vitis workspace that was compiled during previous step:
 
- <img src="https://raw.githubusercontent.com/Cr4sh/pico_dma/master/docs/images/vivado_elf.png" width="423">
+ <p align="center"><img src="https://raw.githubusercontent.com/Cr4sh/pico_dma/master/docs/images/vivado_elf.png" width="423"></p>
 
  8. Run implementation and generate bitstream in Vivado, after successful completion you can execute `make bin` command to copy bitstream MCS and BIN files from Vivado project output directory into the `~/pico_dma/` root directory.
 
