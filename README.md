@@ -129,7 +129,7 @@ TLP RX: size = 0x0b, source = 00:00.0, type = CplD
 
 ## Autonomous DMA attacks
 
-While working in autonomous mode, which is activated by default when board powers on, Pico DMA is trying to start DMA attack as soon as PCI-E bus becomes usable, injects previously flashed payload UEFI DXE driver into the target machine boot sequence and prints appropriate debug messages into the UART port:
+While working in autonomous mode, which is activated by default when board powers on, Pico DMA is trying to start DMA attack as soon as PCI-E bus becomes usable, injects previously flashed payload UEFI DXE driver into the target machine boot sequence and prints the following debug messages into the UART port:
 
 ```
 mode_standalone(): Starting attack...
@@ -160,7 +160,9 @@ Payload entry is at 0xC23C4
 mode_standalone(): Completed
 ```
 
-After the accomplished pre-boot DMA attack Pico DMA software halts its operation and will perform the attack once again when reset event occurs, which happens after the target reboot or next power on.
+After accomplished pre-boot DMA attack Pico DMA software halts its operation and will perform another attack attempt only when reset event occurs, which happens after the target reboot or next power on.
+
+At early stage of the attack Pico DMA software performs target system physical memory scan starting from address `0xe0000000` down to address `0x70000000` with `0x10000` bytes step in order to locate some UEFI driver image that belongs to the platform firmware, and later using this image it locates necessary `EFI_SYSTEM_TABLE` address. To override default configuration of memory scan you can specify appropriate values in `--scan-start`, `--scan-end` and `--scan-step` command line options of `evb_ctl.py` program while loading payload into the board with `--rom-load` option.
 
 Project documentation is still incomplete at this moment.
 
