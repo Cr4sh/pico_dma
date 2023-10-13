@@ -87,7 +87,6 @@ struct PAYLOAD_CONF
 
 struct SCAN_CONF
 {
-    u64 reserved;
     u64 signature;
     u64 addr_start;
     u64 addr_end;
@@ -685,9 +684,10 @@ static int rom_info(u64 *image_base, u32 *image_size, u32 *image_conf)
 {
     struct dos_header dos_hdr;
     struct pe64_nt_headers nt_hdr;    
+    u32 addr = sizeof(struct SCAN_CONF);
 
     // read DOS header
-    if (rom_read(0, (u8 *)&dos_hdr, sizeof(dos_hdr)) != XST_SUCCESS)
+    if (rom_read(addr, (u8 *)&dos_hdr, sizeof(dos_hdr)) != XST_SUCCESS)
     {
         return XST_FAILURE;
     }
@@ -699,7 +699,7 @@ static int rom_info(u64 *image_base, u32 *image_size, u32 *image_conf)
     }
 
     // read NT headers
-    if (rom_read(dos_hdr.e_lfanew, (u8 *)&nt_hdr, sizeof(nt_hdr)) != XST_SUCCESS)
+    if (rom_read(addr + dos_hdr.e_lfanew, (u8 *)&nt_hdr, sizeof(nt_hdr)) != XST_SUCCESS)
     {
         return XST_FAILURE;
     }
@@ -729,7 +729,7 @@ static int rom_info(u64 *image_base, u32 *image_size, u32 *image_conf)
         struct pe32_section_header sec_hdr;
 
         // read section header
-        if (rom_read(sec_addr, (u8 *)&sec_hdr, sizeof(sec_hdr)) != XST_SUCCESS)
+        if (rom_read(addr + sec_addr, (u8 *)&sec_hdr, sizeof(sec_hdr)) != XST_SUCCESS)
         {
             return XST_FAILURE;
         }
@@ -922,8 +922,7 @@ static void mode_standalone(void)
         u32 read_size = MIN(FLASH_PAGE_SIZE, image_size - ptr);
 
         // read payload from flash
-        if (spi_flash_read(
-            ROM_SPI_ADDR + ptr, buff, read_size, COMMAND_RANDOM_READ) != XST_SUCCESS)
+        if (rom_read(sizeof(scan_conf) + ptr, buff, read_size) != XST_SUCCESS)
         {
             xil_printf("ERROR: spi_flash_read() fails\n");
             return;
