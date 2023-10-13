@@ -196,6 +196,18 @@ To build Pico DMA software and bitstream form the source code and you need to pe
 
  8. Run implementation and generate bitstream in Vivado, after successful completion you can execute `make bin` command to copy bitstream MCS and BIN files from Vivado project output directory into the `~/pico_dma/` root directory.
 
+To flash generated Pico DMA bitstream file `7x_pcie_microblaze.bin` into the board over JTAG using Vivado, without any 3-rd party tools or projects, you can perform the following steps:
+
+ 1. Connect JTAG interface of PicoEVB to your computer using [recommended M.2 adapter](https://github.com/RHSResearchLLC/PicoEVB/wiki/Adapters) and USB cable.
+
+ 2. Install [virtual JTAG cable software](https://github.com/RHSResearchLLC/xvcd) and run `sudo ./xvcd -P 0x6015` in the console to start its server.
+
+ 3. Execute the following command in Vivado TCL console to run Hardware Manager and connect to the board over the virtual cable software: `open_hw; connect_hw_server; open_hw_target -xvc_url localhost:2542`.
+
+ 4. In Hardware Manager you need to select `xc7a50t_0` FPGA chip and run "Program Device" from its context menu to load the bitstream.
+
+ 5. Now you can follow previously described steps from [Software configuration](#software-configuration) part of documentation to flash FPGA bitstream and payload image into the on-board SPI flash chip of PicoEVB with `evb_ctl.py` program.
+
 
 ## About
 
