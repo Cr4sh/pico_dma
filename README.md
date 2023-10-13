@@ -69,7 +69,7 @@ Also, you can use the same program to flash FPGA bitstream into the board:
 [+] Done
 ```
 
-PicoEVB board has 4 MB SPI flash chip, this design is using `0x150000` bytes of its space for FPGA bitstream (that also embeds [compiled software image](https://github.com/Cr4sh/pico_dma/tree/main/software/application/Debug) for MicroBlaze soft-processor) and remaining `0x2b0000` bytes for pre-boot DMA attack payload, so its maximum size is limited to this specific value.
+PicoEVB board has 4 MB SPI flash chip, this design [is using](https://github.com/Cr4sh/pico_dma/blob/99c6463da0a0c17a4efcb734942122681945c016/software/application/src/platform_config.h#L25) `0x150000` bytes of its space for FPGA bitstream (that also embeds [compiled software image](https://github.com/Cr4sh/pico_dma/tree/main/software/application/Debug) for MicroBlaze soft-processor) and remaining `0x2b0000` bytes for pre-boot DMA attack payload, so its maximum size is limited to this specific value.
 
 When PCI-E link with the board is up &minus; UART-controlled mode allows you to work with usual Python tools from PCI Express DIY hacking toolkit. For example, you can read PCI configuration space registers of the board using `pcie_cfg.py` program:
 
