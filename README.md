@@ -2,6 +2,7 @@
 # Pico DMA
 
 [General information](#general-information)  
+[Contents](#contents)  
 [Hardware configuration](#hardware-configuration)  
 [Software configuration](#software-configuration)  
 [Autonomous DMA attacks](#autonomous-dma-attacks)  
@@ -16,6 +17,23 @@ Despite being focused on autonomous operation Pico DMA alternatively can be cont
 On the picture you can see PicoEVB board with set of adapters that allows to use the implant with various PCI Express slots on the target: PCIe x1, mPCIe and [M.2 key M](https://github.com/RHSResearchLLC/PicoEVB/wiki/Adapters):
 
 <img src="https://raw.githubusercontent.com/Cr4sh/pico_dma/master/docs/images/boards.jpg" width="700">
+
+
+## Contents
+
+The project consists from the following files and directories:
+
+ * `7x_pcie_microblaze.tcl` &minus; Template to generate Vivado project of FPGA bitstream for PicoEVB development board.
+
+ * `hdl/` &minus; Pico DMA project Verilog source code and constraints.
+
+ * `ip/` &minus; Configuration files for IP cores.
+
+ * `software/application/` &minus; Pico DMA project software that woks with TLP layer of PCI Express bus to perform pre-boot DMA attacks.
+
+ * `7x_pcie_microblaze.bin` &minus; Ready to use raw bitstream binary.
+
+ * `7x_pcie_microblaze.bit` &minus; Bitstream binary in Vivado-acceptable format.
 
 
 ## Hardware configuration
