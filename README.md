@@ -25,7 +25,7 @@ The project consists from the following files and directories:
 
  * `7x_pcie_microblaze.tcl` &minus; Template to generate Vivado project of FPGA bitstream for PicoEVB development board.
 
- * `7x_pcie_microblaze.xsa` &minus; Exported hardware configuration of MicroBlaze soft-processor to use with Xilinx Vtis IDE projects.
+ * `7x_pcie_microblaze.xsa` &minus; Exported hardware configuration of MicroBlaze soft-processor to use with Xilinx Vitis IDE projects.
 
  * `7x_pcie_microblaze.bin` &minus; Ready to use raw bitstream binary.
 
