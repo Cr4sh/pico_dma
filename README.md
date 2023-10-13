@@ -5,7 +5,7 @@
 [Hardware configuration](#hardware-configuration)  
 [Software configuration](#software-configuration)  
 [Autonomous DMA attacks](#autonomous-dma-attacks)  
-[Building the Project](#building-the-project)  
+[Building the project](#building-the-project)  
 
 ## General information
 
@@ -188,9 +188,11 @@ To build Pico DMA software and bitstream form the source code and you need to pe
 
  <img src="https://raw.githubusercontent.com/Cr4sh/pico_dma/master/docs/images/vitis_export.png" width="444">
 
- 6. Compile Debug build of the platform and application in Vitis, resulting software image for MicroBlaze soft processor instance will be created at `~/pico_dma/software/application/Debug/application.elf` file path.
+ 6. Compile Debug build of the platform and application in Vitis, resulting software image for MicroBlaze soft-processor will be created at `~/pico_dma/software/application/Debug/application.elf` file path.
 
- 7. Close Vitis and get back to the Vivado. In design sources tree of the project you need to locate `application.elf` file, click "Replace File..." in its context menu and replace it with binary from your Vitis workspace that was compiled during previous step.
+ 7. Close Vitis and get back to the Vivado. In design sources tree of the project you need to locate `application.elf` file, click "Replace File..." in its context menu and replace it with binary from your Vitis workspace that was compiled during previous step:
+
+ <img src="https://raw.githubusercontent.com/Cr4sh/pico_dma/master/docs/images/vivado_elf.png" width="423">
 
  8. Run implementation and generate bitstream in Vivado, after successful completion you can execute `make bin` command to copy bitstream MCS and BIN files from Vivado project output directory into the `~/pico_dma/` root directory.
 
