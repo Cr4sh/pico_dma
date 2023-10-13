@@ -25,15 +25,17 @@ The project consists from the following files and directories:
 
  * `7x_pcie_microblaze.tcl` &minus; Template to generate Vivado project of FPGA bitstream for PicoEVB development board.
 
- * `hdl/` &minus; Pico DMA project Verilog source code and constraints.
-
- * `ip/` &minus; Configuration files for IP cores.
-
- * `software/application/` &minus; Pico DMA project software that woks with TLP layer of PCI Express bus to perform pre-boot DMA attacks.
+ * `7x_pcie_microblaze.xsa` &minus; Exported hardware configuration of MicroBlaze soft-processor to use with Xilinx Vtis IDE projects.
 
  * `7x_pcie_microblaze.bin` &minus; Ready to use raw bitstream binary.
 
  * `7x_pcie_microblaze.bit` &minus; Bitstream binary in Vivado-acceptable format.
+
+ * `ip/` &minus; Configuration files for IP cores.
+
+ * `hdl/` &minus; Pico DMA project Verilog source code and constraints.
+
+ * `software/application/` &minus; Pico DMA project software that woks with TLP layer of PCI Express bus to perform pre-boot DMA attacks.
 
 
 ## Hardware configuration
