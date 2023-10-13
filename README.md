@@ -5,6 +5,7 @@
 [Hardware configuration](#hardware-configuration)  
 [Software configuration](#software-configuration)  
 [Autonomous DMA attacks](#autonomous-dma-attacks)  
+[Building the Project](#building-the-project)  
 
 ## General information
 
@@ -165,6 +166,33 @@ After accomplished pre-boot DMA attack Pico DMA software halts its operation and
 At early stage of the attack Pico DMA software performs target system physical memory scan starting from address `0xe0000000` down to address `0x70000000` with `0x10000` bytes step in order to locate some UEFI driver image that belongs to the platform firmware, and later using this image it locates necessary `EFI_SYSTEM_TABLE` address. To override default configuration of memory scan you can specify appropriate values in `--scan-start`, `--scan-end` and `--scan-step` command line options of `evb_ctl.py` program while loading payload into the board with `--rom-load` option.
 
 Project documentation is still incomplete at this moment.
+
+
+## Building the project
+
+To build Pico DMA software and bitstream form the source code and you need to perform the following steps:
+
+ 1. Run `make project` to generate Vivado project from `7x_pcie_microblaze.tcl` template.
+
+ 2. Open generated project `7x_pcie_microblaze/7x_pcie_microblaze.xpr` in Vivado, run synthesis and export hardware design into the `pcie_microblaze_top.xsa` file using "File" → "Export" → "Export Hardware" main menu item.
+
+ 3. Run Xilinx Vitis IDE form Vivado using "Tools" → "Launch Vitis" main menu item. In Vitis you need to specify new empty folder (for example, `~/pico_dma/vitis/`) as your workspace and create new platform project from `pcie_microblaze_top.xsa` hardware description file generated at previous step:
+
+ <img src="https://raw.githubusercontent.com/Cr4sh/pico_dma/master/docs/images/vitis_platform.png" width="425">
+
+ 4. In Vitis IDE you need to create new C project called `application` for your platform and select "Empty Application" from available templates:
+
+ <img src="https://raw.githubusercontent.com/Cr4sh/pico_dma/master/docs/images/vitis_project.png" width="425">
+
+ 5. Now you need to export C code and header files from `~/pico_dma/software/application/src/` folder into the source code tree of your newly created application like it shown on the picture:
+
+ <img src="https://raw.githubusercontent.com/Cr4sh/pico_dma/master/docs/images/vitis_export.png" width="444">
+
+ 6. Compile Debug build of the platform and application in Vitis, resulting software image for MicroBlaze soft processor instance will be created at `~/pico_dma/software/application/Debug/application.elf` file path.
+
+ 7. Close Vitis and get back to the Vivado. In design sources tree of the project you need to locate `application.elf` file, click "Replace File..." in its context menu and replace it with binary from your Vitis workspace that was compiled during previous step.
+
+ 8. Run implementation and generate bitstream in Vivado, after successful completion you can execute `make bin` command to copy bitstream MCS and BIN files from Vivado project output directory into the `~/pico_dma/` root directory.
 
 
 ## About
